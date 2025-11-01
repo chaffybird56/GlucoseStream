@@ -22,7 +22,6 @@ terraform.tfvars
 # Go
 bin/
 dist/
-go.sum
 **/bootstrap
 **/ingest
 **/dqcheck
