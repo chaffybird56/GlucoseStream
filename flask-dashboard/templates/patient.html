@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlucoseStream — Patient</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Patient Metrics</h1>
+      <div id="chart1"></div>
+      <div id="chart2"></div>
+      <div id="chart3"></div>
+    </div>
+    <script>
+      const series = JSON.parse('{{ series_json | safe }}');
+      const dates = series.dates;
+
+      Plotly.newPlot('chart1', [{
+        x: dates,
+        y: series.mean_glucose,
+        mode: 'lines+markers',
+        line: {color: '#1f77b4'},
+        name: 'Mean (mg/dL)'
+      }], { title: `Mean Glucose — ${series.patient_id}` });
+
+      Plotly.newPlot('chart2', [{
+        x: dates,
+        y: series.tir.map(v => v * 100),
+        mode: 'lines+markers',
+        line: {color: '#2ca02c'},
+        name: 'TIR (%)'
+      }], { title: 'Time in Range (70-180) %' });
+
+      Plotly.newPlot('chart3', [
+        { x: dates, y: series.cv, mode: 'lines', name: 'CV', line: {color: '#ff7f0e'} },
+        { x: dates, y: series.gmi, mode: 'lines', name: 'GMI', yaxis: 'y2', line: {color: '#9467bd'} }
+      ], {
+        title: 'Variability (CV) & GMI',
+        yaxis: { title: 'CV' },
+        yaxis2: { title: 'GMI', overlaying: 'y', side: 'right' }
+      });
+    </script>
+  </body>
+  </html>
+
+

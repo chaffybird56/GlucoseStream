@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlucoseStream — Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>GlucoseStream</h1>
+      <p>Enter a patient ID to view metrics.</p>
+      <form action="/patient" method="get">
+        <label>Patient ID <input type="text" name="id" value="p1" /></label>
+        <label>Days <input type="number" name="days" value="30" min="1" max="180" /></label>
+        <label>DP epsilon (0 = off) <input type="number" step="0.1" name="dp" value="0.0" /></label>
+        <button type="submit">View</button>
+      </form>
+      <p class="note">Set env: <code>AWS_REGION</code>, <code>ATHENA_WORKGROUP</code>, <code>GLUE_DB</code>, and optionally <code>ATHENA_OUTPUT</code>.</p>
+    </div>
+  </body>
+  </html>
+
+
