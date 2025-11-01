@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  terraform-go-python:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Fmt
+        working-directory: ./terraform
+        run: |
+          terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Validate
+        working-directory: ./terraform
+        run: |
+          terraform init -backend=false
+          terraform validate
+        continue-on-error: true
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Build Lambdas
+        run: |
+          for d in ./lambdas/*-go; do \
+            echo "Building $d"; \
+            (cd "$d" && go build ./...); \
+          done
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Lint Flask
+        working-directory: ./flask-dashboard
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install flake8
+          flake8 --max-line-length=100 . || true
+
+      - name: Run tests
+        run: |
+          sudo apt-get update && sudo apt-get install -y python3-venv
+          make test
+
+

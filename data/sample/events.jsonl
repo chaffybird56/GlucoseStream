@@ -1,0 +1,4 @@
+{"event_id":"e1","patient_id":"p1","session_id":"s1","event_time":"2025-10-01T00:00:00Z","mg_dL":120.0,"source":"sensor"}
+{"event_id":"e2","patient_id":"p1","session_id":"s1","event_time":"2025-10-01T00:05:00Z","mg_dL":125.0,"source":"sensor"}
+{"event_id":"e3","patient_id":"p1","session_id":"s1","event_time":"2025-10-01T00:10:00Z","mg_dL":130.0,"source":"sensor"}
+
