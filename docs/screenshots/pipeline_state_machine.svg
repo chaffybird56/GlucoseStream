@@ -1,0 +1,20 @@
+<svg width="960" height="340" viewBox="0 0 960 340" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="340" fill="#ffffff"/>
+  <text x="30" y="40" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#111">GlucoseStream — Pipeline Orchestration (Mock)</text>
+  <rect x="60" y="120" width="160" height="60" rx="6" ry="6" fill="#e8f1fb" stroke="#1f77b4"/>
+  <text x="80" y="155" font-size="14" fill="#1f77b4">Start Raw Crawler</text>
+  <rect x="280" y="120" width="160" height="60" rx="6" ry="6" fill="#e8f1fb" stroke="#1f77b4"/>
+  <text x="310" y="155" font-size="14" fill="#1f77b4">Create Tables</text>
+  <rect x="500" y="120" width="160" height="60" rx="6" ry="6" fill="#e8f1fb" stroke="#1f77b4"/>
+  <text x="520" y="155" font-size="14" fill="#1f77b4">Transformations</text>
+  <rect x="720" y="120" width="160" height="60" rx="6" ry="6" fill="#fdebd2" stroke="#ff7f0e"/>
+  <text x="760" y="155" font-size="14" fill="#ff7f0e">DQ Checks</text>
+  <line x1="220" y1="150" x2="280" y2="150" stroke="#555" stroke-width="2"/>
+  <polygon points="280,150 270,145 270,155" fill="#555"/>
+  <line x1="440" y1="150" x2="500" y2="150" stroke="#555" stroke-width="2"/>
+  <polygon points="500,150 490,145 490,155" fill="#555"/>
+  <line x1="660" y1="150" x2="720" y2="150" stroke="#555" stroke-width="2"/>
+  <polygon points="720,150 710,145 710,155" fill="#555"/>
+  <text x="60" y="230" font-size="12" fill="#333">On DQ failure, the state machine stops and raises an alert; otherwise, curated outputs are ready for analytics.</text>
+</svg>
+
