@@ -112,6 +112,27 @@ GlucoseStream/
 
 ## 🚀 Quickstart
 
+### Quick Demo (Recommended First Step)
+
+**Try the system without AWS setup:**
+
+```bash
+./scripts/quick_demo.sh
+```
+
+This script will:
+- ✅ Generate sample glucose data (24 hours for patient 'p1')
+- ✅ Show data statistics and preview
+- ✅ Provide instructions for running the Flask dashboard
+- ✅ Display key metrics (Time in Range, average glucose, etc.)
+
+**What you'll see:**
+- Sample glucose events in JSONL format
+- Data statistics (range, average, Time in Range %)
+- Instructions for viewing the dashboard
+
+### Full Setup (AWS Infrastructure)
+
 ### Prerequisites
 
 - AWS account with credentials configured (`aws configure`)
@@ -135,6 +156,11 @@ terraform apply -auto-approve
 ```bash
 cd data-generator
 go run ./... -patient p1 -minutes 1440 -out sample_events.jsonl
+```
+
+**Or use the quick demo script:**
+```bash
+./scripts/quick_demo.sh
 ```
 
 **What this does:** Creates realistic glucose readings (1 day of data at 1-minute intervals) for testing.
